@@ -1,0 +1,35 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.auth {
+    color: #fff;
+    background: #121212;
+    display: block;
+    margin:15% 0 0 40%;
+    padding: 40px;
+    text-align: center;
+    width: 300px;
+}
+
+.auth input {
+    color: #fff;
+    border: 0;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid #3498db;
+    outline: none;
+    border-radius: 24px;
+    width: 200px;
+    padding: 14px 10px;
+}
+
+.auth button {
+    background: #00ff84;
+    border: 0;
+    border-radius: 24px;
+    padding: 12px 40px;  
+}
