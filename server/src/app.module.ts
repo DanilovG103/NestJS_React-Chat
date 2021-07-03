@@ -1,10 +1,11 @@
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Module } from '@nestjs/common';
 import { UsersModule } from './users/users.module';
-import { Users } from './users/users.model';
+import { Users } from './users/users.entity';
 import { AuthModule } from './auth/auth.module';
-import { Message } from './chat/message.model';
+import { Message } from './chat/message.entity';
 import { ChatModule } from './chat/chat.module';
+import "reflect-metadata";
 
 @Module({
   imports:[

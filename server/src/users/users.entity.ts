@@ -1,22 +1,18 @@
-import { Column, DataType, Table, Model, HasMany } from "sequelize-typescript";
+import { Column, Entity, Generated, OneToMany, PrimaryColumn, PrimaryGeneratedColumn } from 'typeorm';
 import { Message } from '../chat/message.entity';
 
-interface UsersCreationAttr {
-    login: string;
-    password: string;
-}
-
-@Table({tableName:'users'})
-export class Users extends Model<Users,UsersCreationAttr> {
-    @Column({type: DataType.INTEGER, unique:true , primaryKey: true, autoIncrement:true})
+@Entity({name: 'Users'})
+export class Users {
+    @PrimaryGeneratedColumn()
     id:number
 
-    @Column({type: DataType.STRING, unique:true})
+    @PrimaryColumn('text')
     login:string
 
-    @Column({type:DataType.STRING, unique:false})
+    @PrimaryColumn('text')
     password:string
 
-    @HasMany(() => Message)
+    @OneToMany(() => Message,(message:Message) => message.author)
     message: Message
 }
+

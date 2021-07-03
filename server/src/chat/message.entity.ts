@@ -1,19 +1,14 @@
-import { Column, DataType, ForeignKey, Model, Table } from "sequelize-typescript";
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { Users } from "../users/users.entity";
 
-interface MessageCreationAttr {
-    content: string;
-    author: Users;
-}
-
-@Table({tableName: 'messages'})
-export class Message extends Model<Message, MessageCreationAttr>{
-    @Column({type: DataType.INTEGER, unique:true , primaryKey: true, autoIncrement:true})
+@Entity({name: 'messages'})
+export class Message{
+    @PrimaryGeneratedColumn()
     id:number
 
-    @Column({type: DataType.STRING})
+    @Column({type:String})
     content: string
 
-    @ForeignKey(() => Users)
+    @ManyToOne(() => Users)
     author: Users
 }
