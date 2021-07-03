@@ -1,7 +1,7 @@
 import { HttpException, HttpStatus, Injectable, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcryptjs'
-import { Users } from '../users/users.entity';
+import { Users } from '../users/users.model';
 import { UsersService } from '../users/users.service';
 import { CreateUserDto } from '../dto/create-user.dto';
 
@@ -10,7 +10,7 @@ export class AuthService {
 
     constructor(private userService: UsersService, private jwtService: JwtService){}
     
-    async login(userDto: CreateUserDto){
+    async login (userDto: CreateUserDto){
         const user = await this.validateUser(userDto)
         return this.generateToken(user)
     }

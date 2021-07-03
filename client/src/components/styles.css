@@ -33,3 +33,62 @@ body {
     border-radius: 24px;
     padding: 12px 40px;  
 }
+
+.messages {
+    display: flex;
+    margin: 0 auto;
+    height: 60vh;
+    width: 50vw;
+    border: 1px solid black;
+    font-size: 24px;
+}
+
+.elems {
+    width: 50vw;
+    display: flex;
+    margin: 1rem auto 5rem;
+}
+
+.elems input {
+    color: #000;
+    display: block;
+    margin: 1rem auto;
+    border: 2px solid #3498db;
+    outline: none;
+    width: 70vw;
+    height: 5vh;
+}
+
+.elems button {
+    border: 2px solid #18d7f8;
+    margin: 1rem auto 1rem 0.5rem;
+    transition: all 0.3s;
+}
+
+button:disabled {
+    border: 2px solid #fb3535;
+}
+
+.nickname {
+    outline: none;
+    margin: 1rem auto;
+}
+
+.chat {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-info {
+    width: 40vw;
+    display: flex;
+}
+
+.auth-info {
+    font-size: 18px;
+}
+
+.login-name {
+    padding: 3px 5px;
+    font-weight: bold;
+}

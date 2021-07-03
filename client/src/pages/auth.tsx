@@ -21,8 +21,6 @@ const Auth = () => {
                 placeholder="Введите логин"/>
                 <input type="password"
                 placeholder="Введите пароль"/>
-                <input type="text"
-                placeholder="Введите ваш ник"/>
                 <button>Зарегистрироваться</button>
             </form>
             )} 

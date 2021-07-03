@@ -1,12 +1,12 @@
+import {BrowserRouter} from 'react-router-dom'
 import '../src/components/styles.css'
-import Chat from "./pages/chat";
-import Auth from "./pages/auth";
+import AppRouter from './components/AppRouter';
 
 function App() {
   return (
-    <div className="App">
-      <Auth/>
-    </div>
+    <BrowserRouter>
+      <AppRouter/>
+    </BrowserRouter>
   );
 }
 

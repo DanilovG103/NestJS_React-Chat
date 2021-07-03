@@ -7,16 +7,12 @@ import { CreateUserDto } from '../dto/create-user.dto';
 export class UsersController {
 
     constructor(private usersService: UsersService){}
-
+    
+    @UseGuards(JwtAuthGuard)
+    
     @Post()
     create(@Body() userDto:CreateUserDto) {
         return this.usersService.createUser(userDto)
     }
 
-    @UseGuards(JwtAuthGuard)
-
-    @Get()
-    getAll(){
-        return this.usersService.getAllUsers()
-    }
 }

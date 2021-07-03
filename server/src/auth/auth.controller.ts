@@ -16,4 +16,5 @@ export class AuthController {
     registration(@Body() userDto: CreateUserDto){
         return this.authService.registration(userDto)
     }
+
 }

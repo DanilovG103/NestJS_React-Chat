@@ -1,22 +1,22 @@
-import { SequelizeModule } from '@nestjs/sequelize';
+import { TypeOrmModule } from '@nestjs/typeorm';
 import { Module } from '@nestjs/common';
 import { UsersModule } from './users/users.module';
-import { Users } from './users/users.entity';
+import { Users } from './users/users.model';
 import { AuthModule } from './auth/auth.module';
-import { Message } from './chat/message.entity';
+import { Message } from './chat/message.model';
 import { ChatModule } from './chat/chat.module';
 
 @Module({
   imports:[
-    SequelizeModule.forRoot({
-      dialect: 'postgres',
+    TypeOrmModule.forRoot({
+      type: 'postgres',
       host: 'localhost',
       port: 5432,
       username: 'postgres',
       password: 'root',
       database: 'my_database',
-      autoLoadModels: true,
-      models: [Users, Message],
+      synchronize: true,
+      entities: [Users, Message],
     }),
     UsersModule,
     AuthModule,
