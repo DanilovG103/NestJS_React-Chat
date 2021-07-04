@@ -5,7 +5,7 @@ import { Users } from './users/users.entity';
 import { AuthModule } from './auth/auth.module';
 import { Message } from './chat/message.entity';
 import { ChatModule } from './chat/chat.module';
-import "reflect-metadata";
+import 'reflect-metadata'
 
 @Module({
   imports:[

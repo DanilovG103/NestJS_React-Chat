@@ -3,10 +3,6 @@ import Chat from "../pages/chat";
 
 export const authRoutes = [
     {
-        path: '/auth',
-        component: Auth
-    },
-    {
         path: '/chat',
         component: Chat
     }
@@ -14,7 +10,11 @@ export const authRoutes = [
 
 export const publicRoutes = [
     {
-        path: '/auth',
+        path: '/login',
+        component: Auth
+    },
+    {
+        path: '/registration',
         component: Auth
     }
 ]

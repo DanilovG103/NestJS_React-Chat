@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { io } from "socket.io-client"
 
 const Chat = () => {
-    const socket = io('http://localhost:7564');
+    const socket = io('http://localhost:4000');
     const [btnDisabled,setBtnDisabled] = useState<boolean>(true)
     const [name,setName] = useState<string>('');
     const [message,setMessage] = useState<string>('');

@@ -3,6 +3,14 @@ body {
     padding: 0;
 }
 
+.change-action {
+    display: flex;
+    margin: 1em auto 0 ;
+    text-decoration: none;
+    color: #fff;
+    width: 150px;
+}
+
 .auth {
     color: #fff;
     background: #121212;
@@ -28,6 +36,8 @@ body {
 }
 
 .auth button {
+    margin: auto;
+    display: flex;
     background: #00ff84;
     border: 0;
     border-radius: 24px;

@@ -1,17 +1,18 @@
 import { Switch, Route, Redirect } from 'react-router-dom'
 import { authRoutes, publicRoutes } from './routes'
 
-const AppRouter = () => {
-    const isAuth = true
+const AppRouter = () => {   
+    const auth = true
+    
     return (
         <Switch>
-            {isAuth && authRoutes.map(({path, component}) => 
+            {auth && authRoutes.map(({path, component}) => 
                 <Route key={path} path={path} component={component} exact/>
             )}
             {publicRoutes.map(({path, component}) => 
                 <Route key={path} path={path} component={component} exact/>
             )}
-            <Redirect to='auth'/>
+            <Redirect to='/login'/>
         </Switch>
     )
 }
