@@ -9,7 +9,7 @@ import {
 import { Socket, Server } from 'socket.io';
 import { Users } from "../users/users.entity";
 
-@WebSocketGateway()
+@WebSocketGateway(4001, { transports: ["websocket"] })
 export class ChatGateway implements OnGatewayInit, OnGatewayConnection, OnGatewayDisconnect {
   @WebSocketServer() server:Server
 

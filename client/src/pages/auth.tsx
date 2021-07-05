@@ -1,4 +1,3 @@
-import { observable } from 'mobx'
 import { useState } from 'react'
 import { NavLink, useLocation, useHistory } from 'react-router-dom'
 import { login, registration } from '../http/userAPI'
@@ -11,23 +10,23 @@ const Auth = () => {
     const [pswd, setPswd] = useState<string>('')
 
     const enter = async () => {
+        let data;
         try {
             if (isLogin) {
-                const data = await login(username,pswd)
-            }else {
-                const data = await registration(username, pswd)
+                data = await login(username,pswd) 
+            } else {
+                data = await registration(username, pswd)
             }
-            history.push('/chat') 
-        } catch (error:any) {
-            alert(error.response.data.message)   
+            history.push('chat') 
+        } catch (error) {
+            console.error(error)
         }
     }
-
 
     return (
         <div>
             {(isLogin) ? (
-            <form className="auth">
+            <div className="auth">
                 <h1>Войти в аккаунт</h1>
                 <input type="text"
                 value={username}
@@ -39,9 +38,9 @@ const Auth = () => {
                 placeholder="Введите пароль"/>
                 <button onClick={enter}>Войти</button>
                 <NavLink className="change-action" to='registration'>Нет аккаунта? Зарегиструйтесь!</NavLink>
-            </form>
+            </div>
             ) : (
-            <form className="auth">
+            <div className="auth">
                 <h1>Регистрация</h1>
                 <input type="text"
                 value={username}
@@ -53,7 +52,7 @@ const Auth = () => {
                 placeholder="Введите пароль"/>
                 <button onClick={enter}>Зарегистрироваться</button>
                 <NavLink className="change-action" to='login'>Уже есть аккаунт? Войдите!</NavLink>
-            </form>
+            </div>
             )} 
         </div>
     )
