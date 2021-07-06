@@ -1,5 +1,4 @@
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Message } from '../chat/message.entity';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity({name: 'Users'})
 export class Users {
@@ -11,7 +10,4 @@ export class Users {
 
     @Column('text')
     password:string
-
-    @OneToMany(() => Message,(message:Message) => message.author)
-    message: Message
 }

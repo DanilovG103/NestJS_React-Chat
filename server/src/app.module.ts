@@ -17,6 +17,7 @@ import 'reflect-metadata'
       password: 'root',
       database: 'my_database',
       synchronize: true,
+      autoLoadEntities: true,
       entities: [Users, Message],
     }),
     UsersModule,

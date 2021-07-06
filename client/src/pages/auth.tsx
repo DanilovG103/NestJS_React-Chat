@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { useState } from 'react'
 import { NavLink, useLocation, useHistory } from 'react-router-dom'
 import { login, registration } from '../http/userAPI'
@@ -8,6 +9,11 @@ const Auth = () => {
     const isLogin:boolean = location.pathname === '/login'
     const [username, setUsername] = useState<string>('')
     const [pswd, setPswd] = useState<string>('')
+    const [disable,setDisable] = useState<boolean>(false)
+
+    useEffect(() => {
+        (username.length > 0 && pswd.length > 0) ? setDisable(false) : setDisable(true)
+    },[username,pswd])
 
     const enter = async () => {
         let data;
@@ -19,7 +25,7 @@ const Auth = () => {
             }
             history.push('chat') 
         } catch (error) {
-            console.error(error)
+            alert(error.response.data.message)
         }
     }
 
@@ -36,7 +42,7 @@ const Auth = () => {
                 value={pswd}
                 onChange={e => setPswd(e.target.value)}
                 placeholder="Введите пароль"/>
-                <button onClick={enter}>Войти</button>
+                <button className="entry" onClick={enter} disabled={disable}>Войти</button>
                 <NavLink className="change-action" to='registration'>Нет аккаунта? Зарегиструйтесь!</NavLink>
             </div>
             ) : (
@@ -50,7 +56,7 @@ const Auth = () => {
                 value={pswd}
                 onChange={e => setPswd(e.target.value)}
                 placeholder="Введите пароль"/>
-                <button onClick={enter}>Зарегистрироваться</button>
+                <button className="entry" onClick={enter} disabled={disable}>Зарегистрироваться</button>
                 <NavLink className="change-action" to='login'>Уже есть аккаунт? Войдите!</NavLink>
             </div>
             )} 

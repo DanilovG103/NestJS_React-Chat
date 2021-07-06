@@ -8,7 +8,7 @@ export const authRoutes = [
     }
 ]
 
-export const publicRoutes = [
+export const routes = [
     {
         path: '/login',
         component: Auth
@@ -18,3 +18,4 @@ export const publicRoutes = [
         component: Auth
     }
 ]
+    
