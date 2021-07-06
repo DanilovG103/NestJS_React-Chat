@@ -607,17 +607,17 @@
     tslib "2.1.0"
     uuid "8.3.2"
 
-"@nestjs/jwt@^7.2.0":
+"@nestjs/jwt@7.2.0":
   version "7.2.0"
-  resolved "https://registry.npmjs.org/@nestjs/jwt/-/jwt-7.2.0.tgz"
+  resolved "https://registry.yarnpkg.com/@nestjs/jwt/-/jwt-7.2.0.tgz#d55d15c861b3e0d67a852cbe6131b14c85246852"
   integrity sha512-uOTqYmWNpu+oS/MrdYjrWXtKGV4HkCYmAEVEFPP/KfiP/7K6fNy+boLllE6cnqESAXh9u0CLa1noAAavs+LHEQ==
   dependencies:
     "@types/jsonwebtoken" "8.5.0"
     jsonwebtoken "8.5.1"
 
-"@nestjs/platform-express@^7.6.15":
+"@nestjs/platform-express@7.6.15":
   version "7.6.15"
-  resolved "https://registry.npmjs.org/@nestjs/platform-express/-/platform-express-7.6.15.tgz"
+  resolved "https://registry.yarnpkg.com/@nestjs/platform-express/-/platform-express-7.6.15.tgz#816db6999bf65284d5e1292092ec71acd812fbbb"
   integrity sha512-XpoHtai7UlUvm6rLo0u2xtkABhC6YbxNuNYqpv/L+mT1xzKJtPV2jWYxJnsE4WNZAddsnKsAcDjj2nCQgiJ52Q==
   dependencies:
     body-parser "1.19.0"
@@ -626,9 +626,9 @@
     multer "1.4.2"
     tslib "2.1.0"
 
-"@nestjs/platform-socket.io@^7.6.15":
+"@nestjs/platform-socket.io@7.6.15":
   version "7.6.15"
-  resolved "https://registry.npmjs.org/@nestjs/platform-socket.io/-/platform-socket.io-7.6.15.tgz"
+  resolved "https://registry.yarnpkg.com/@nestjs/platform-socket.io/-/platform-socket.io-7.6.15.tgz#f300d908f44d81df5964ac596fc76d65f07aa081"
   integrity sha512-FfEln3TJyie+TsI/AVXbsKOg/gETznwYRzmXjuzP6o3nrMhZ1VMNI7aRJbCt8EUj5SYZrO/DRu3G3XBVWYvUzQ==
   dependencies:
     socket.io "2.4.1"

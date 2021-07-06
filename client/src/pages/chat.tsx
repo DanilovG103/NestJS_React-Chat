@@ -16,7 +16,15 @@ const Chat = () => {
         })
     },[message, messages, setMessages])
 
+    console.log(WS);
+    
+
     const loginInfo: any = jwtDecode(`${localStorage.getItem('token')}`)
+    
+    const logOut = () => {
+        localStorage.removeItem('token')
+        history.push('login')
+    }
 
     const sendMessage = async () => {
         WS.emit("message", {
@@ -25,27 +33,27 @@ const Chat = () => {
         })
         setMessage('')
     }
-    
-    const logOut = () => {
-        localStorage.removeItem('token')
-        history.push('login')
-    }
 
     return (
         <>
         <div className="user-info">
             <p className="auth-info">Авторизованный пользователь:</p>
             <p className="login-name">{loginInfo.login}</p>
-            <button onClick={logOut}>Выйти</button>
         </div>
+        <button className="log-out" onClick={logOut}>Выйти</button>
         <div className="chat">
-            <div className="messages">
-            {messages.map((message: any) =>  
-                <div className="message-info">
-                    {message.author}: {message.content}
-                </div>
-            )}
-            </div>
+            {(!messages.length) ? 
+                (<div className="messages">Сообщений пока нет!</div>
+                ):(
+                <div className="messages">
+                {messages.map((message: any) =>   
+                    <div className={(message.author === loginInfo.login) ? "my-message-info" : "message-info"}>
+                        <span className="author">{message.author}</span>
+                        {message.content}
+                    </div>
+                )}
+                </div>)
+            }
             <div className="elems">
                 <input type="text" 
                 value={message}

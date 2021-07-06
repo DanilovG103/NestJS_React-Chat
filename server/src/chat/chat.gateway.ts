@@ -9,7 +9,7 @@ import {
 import { Socket, Server } from 'socket.io';
 import { MessageRepository } from './message.repository';
 
-@WebSocketGateway(8081, { transports: ["websocket"] })
+@WebSocketGateway(4001, { transports: ["websocket"] })
 export class ChatGateway implements OnGatewayConnection, OnGatewayDisconnect {
   constructor(private messageRepository: MessageRepository){}
   @WebSocketServer() server:Server
