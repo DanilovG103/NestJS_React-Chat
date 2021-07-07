@@ -15,7 +15,7 @@ const Auth = () => {
         (username.length > 0 && pswd.length > 0) ? setDisable(false) : setDisable(true)
     },[username,pswd])
 
-    const enter = async (e) => {
+    const enter = async (e:any) => {
         e.preventDefault()
         let data;
         try {
