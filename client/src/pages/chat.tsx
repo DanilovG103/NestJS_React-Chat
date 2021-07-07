@@ -32,7 +32,7 @@ const Chat = () => {
             content: message,
             author: loginInfo.login
         })
-        setMessage('')
+        setMessage("")
     }
 
     return (
