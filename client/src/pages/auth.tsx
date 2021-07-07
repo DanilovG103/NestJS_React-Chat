@@ -15,7 +15,8 @@ const Auth = () => {
         (username.length > 0 && pswd.length > 0) ? setDisable(false) : setDisable(true)
     },[username,pswd])
 
-    const enter = async () => {
+    const enter = async (e) => {
+        e.preventDefault()
         let data;
         try {
             if (isLogin) {
@@ -32,7 +33,7 @@ const Auth = () => {
     return (
         <div>
             {(isLogin) ? (
-            <div className="auth">
+            <form className="auth">
                 <h1>Войти в аккаунт</h1>
                 <input type="text"
                 value={username}
@@ -44,9 +45,9 @@ const Auth = () => {
                 placeholder="Введите пароль"/>
                 <button className="entry" onClick={enter} disabled={disable}>Войти</button>
                 <NavLink className="change-action" to='registration'>Нет аккаунта? Зарегиструйтесь!</NavLink>
-            </div>
+            </form>
             ) : (
-            <div className="auth">
+            <form className="auth">
                 <h1>Регистрация</h1>
                 <input type="text"
                 value={username}
@@ -58,7 +59,7 @@ const Auth = () => {
                 placeholder="Введите пароль"/>
                 <button className="entry" onClick={enter} disabled={disable}>Зарегистрироваться</button>
                 <NavLink className="change-action" to='login'>Уже есть аккаунт? Войдите!</NavLink>
-            </div>
+            </form>
             )} 
         </div>
     )
