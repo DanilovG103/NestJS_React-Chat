@@ -8,8 +8,9 @@ import {
   WebSocketServer} from '@nestjs/websockets';
 import { Socket, Server } from 'socket.io';
 import { MessageRepository } from './message.repository';
+import { Message } from './message.entity';
 
-@WebSocketGateway(4001, { transports: ["websocket"] })
+@WebSocketGateway(8081, { transports: ["websocket"] })
 export class ChatGateway implements OnGatewayConnection, OnGatewayDisconnect {
   constructor(private messageRepository: MessageRepository){}
   @WebSocketServer() server:Server
@@ -17,7 +18,7 @@ export class ChatGateway implements OnGatewayConnection, OnGatewayDisconnect {
   private logger: Logger = new Logger('ChatGateway');
   
   @SubscribeMessage("message")
-  async createMessage( @MessageBody() data:any) {
+  async createMessage( @MessageBody() data: Message) {
     await this.messageRepository.createMessage(data)
     const messages = await this.getMessages()
     this.logger.log('received_message', `${messages}`)
@@ -35,8 +36,6 @@ export class ChatGateway implements OnGatewayConnection, OnGatewayDisconnect {
   }
 
   async getMessages() {
-    const messages = await this.messageRepository.find();
-    return messages.map(message => message)
+    return await this.messageRepository.find();
   }
-
 }

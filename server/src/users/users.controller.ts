@@ -9,15 +9,15 @@ export class UsersController {
     constructor(private usersService: UsersService){}
 
     @Post()
+    @UseGuards(JwtAuthGuard)
     create(@Body() userDto:CreateUserDto) {
         return this.usersService.createUser(userDto)
     }
 
-    @UseGuards(JwtAuthGuard)
-
     @Get()
+    @UseGuards(JwtAuthGuard)
     getAll(){
         return this.usersService.getAllUsers()
     }
-
+    
 }

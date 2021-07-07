@@ -1,4 +1,4 @@
-import { HttpException, HttpStatus, Injectable, UnauthorizedException } from '@nestjs/common';
+import { BadRequestException, Injectable, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcryptjs'
 import { Users } from '../users/users.entity';
@@ -12,17 +12,16 @@ export class AuthService {
     
     async login (userDto: CreateUserDto){
         const user = await this.validateUser(userDto)
-        return this.generateToken(user)
+        return await this.generateToken(user)
     }
 
     async registration(userDto: CreateUserDto){
         const newUser = await this.userService.getUserByLogin(userDto.login)
-        if (newUser) throw new HttpException('Пользователь с таким логином уже есть', HttpStatus.BAD_REQUEST)
-        
+        if (newUser) throw new BadRequestException('Пользователь с таким логином уже есть')
         const hashPassword = await bcrypt.hash(userDto.password, 5)
         const user = await this.userService.createUser({...userDto,password:hashPassword})
         
-        return this.generateToken(user)
+        return await this.generateToken(user)
     }
     
     private async generateToken(user: Users) {
@@ -39,8 +38,9 @@ export class AuthService {
         if (user && confirm) {
             return user
         }
-
+    
         throw new UnauthorizedException({message: 'Некорректный Логин или Пароль'})
     }
+
 }
  
