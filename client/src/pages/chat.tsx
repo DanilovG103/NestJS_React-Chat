@@ -26,7 +26,8 @@ const Chat = () => {
         history.push('login')
     }
 
-    const sendMessage = async () => {
+    const sendMessage = async (e:any) => {
+        e.preventDefault()
         WS.emit("message", {
             content: message,
             author: loginInfo.login
@@ -54,13 +55,14 @@ const Chat = () => {
                 )}
                 </div>)
             }
-            <div className="elems">
-                <input type="text" 
+            <form className="elems">
+                <input type="text"
+                id="message-text" 
                 value={message}
                 onChange={e => setMessage(e.target.value)} 
                 placeholder="Введите сообщение"/>
-                <button onClick={sendMessage} disabled={btnDisabled}>Отправить</button>
-            </div>
+                <button onClick={sendMessage} disabled={btnDisabled} id="send-message-text">Отправить</button>
+            </form>
         </div>
         </>
     )
