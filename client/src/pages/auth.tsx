@@ -23,7 +23,7 @@ const Auth = () => {
             } else {
                 data = await registration(username, pswd)
             }
-            history.push('chat') 
+            history.push('/chat') 
         } catch (e:any) {
             alert(e.response.data.message)
         }
