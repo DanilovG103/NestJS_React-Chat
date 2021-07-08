@@ -3,7 +3,7 @@ import { Repository, EntityRepository } from "typeorm";
 
 @EntityRepository(Message)
 export class MessageRepository extends Repository<Message> {
-  async createMessage(data: any): Promise<any> {
+  async createMessage(data: Message): Promise<any> {
     const { author, content } = data;
 
     const message = this.create();
