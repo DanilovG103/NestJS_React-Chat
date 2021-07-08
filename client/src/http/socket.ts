@@ -7,7 +7,7 @@ export class Socket {
 
   public static getInstance(): any {
     if (!Socket.instance) {
-      Socket.instance = socketIOClient('http://localhost:8081',{reconnection: true,transports: ["websocket"], autoConnect: true})
+      Socket.instance = socketIOClient('http://localhost:8081',{reconnection: true,transports: ["websocket"]})
     }
 
     return Socket.instance
