@@ -25,6 +25,7 @@ const Auth = () => {
                 data = await registration(username, pswd)
             }
             history.push('/chat') 
+            window.location.reload(true)
         } catch (e:any) {
             alert(e.response.data.message)
         }

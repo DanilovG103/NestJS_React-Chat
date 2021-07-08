@@ -1,5 +1,5 @@
 import jwtDecode from "jwt-decode";
-import {  useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import { WS } from "../http/socket";
 import { useHistory } from 'react-router-dom';
 
@@ -11,14 +11,11 @@ const Chat = () => {
 
     useEffect(() => {
         (message.length > 0) ? setBtnDisabled(false) : setBtnDisabled(true)
-        WS.on("init", (message: any) => {
+        WS.on("init", (message: any) => { 
             setMessages(message)
         })
-    },[message, messages, setMessages])
-
-    console.log(WS);
+    },[message,messages,setMessages])
     
-
     const loginInfo: any = jwtDecode(`${localStorage.getItem('token')}`)
     
     const logOut = () => {
@@ -48,7 +45,7 @@ const Chat = () => {
                 ):(
                 <div className="messages">
                 {messages.map((message: any) =>   
-                    <div className={(message.author === loginInfo.login) ? "my-message-info" : "message-info"}>
+                    <div key={message.id} className={(message.author === loginInfo.login) ? "my-message-info" : "message-info"}>
                         <span className="author">{message.author}</span>
                         {message.content}
                     </div>
