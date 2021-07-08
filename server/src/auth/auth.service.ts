@@ -14,14 +14,6 @@ export class AuthService {
         const user = await this.validateUser(userDto)
         return await this.generateToken(user)
     }
-
-    async registration(userDto: CreateUserDto){
-        const newUser = await this.userService.getUserByLogin(userDto.login)
-        if (newUser) throw new BadRequestException('Пользователь с таким логином уже есть')
-        const user = await this.userService.createUser(userDto)
-        
-        return await this.generateToken(user)
-    }
     
     private async generateToken(user: Users) {
         const payload = {login: user.login,id: user.id}
@@ -32,7 +24,9 @@ export class AuthService {
 
     private async validateUser(userDto: CreateUserDto) {
         const user = await this.userService.getUserByLogin(userDto.login)
+
         if (!user) throw new BadRequestException('Пользователя с таким логином нет')
+
         const confirm = await bcrypt.compare(userDto.password, user.password);
 
         if (user && confirm) {
