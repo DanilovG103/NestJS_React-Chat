@@ -1,19 +1,14 @@
-FROM node:10 AS builder
+FROM node:10-alpine AS builder
 
 WORKDIR /app
 
 COPY ./package*.json ./
 
-RUN npm install
-
-RUN npm install class-validator
-
-RUN npm install class-transformer
+RUN npm install --only=prod
 
 COPY . .
 
 RUN npm run build
-
 
 FROM node:10-alpine
 
