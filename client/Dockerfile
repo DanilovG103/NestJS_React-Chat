@@ -1,10 +1,10 @@
-FROM node:12.13-alpine
+FROM node:10-alpine
 
-WORKDIR /client/
+WORKDIR /usr/client/
 
 COPY package*.json ./
 
-RUN npm install
+RUN npm install --only=prod
 
 COPY . .
 
