@@ -17,6 +17,8 @@ services:
 
     backend:
         restart: always
+        environment: 
+            - POSTGRES_HOST=localhost
         container_name: backend
         depends_on: 
             - postgres
