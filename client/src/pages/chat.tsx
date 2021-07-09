@@ -1,7 +1,8 @@
 import jwtDecode from "jwt-decode";
-import { useEffect, useState } from "react"
+import React,{ useEffect, useState } from "react"
 import { WS } from "../http/socket";
 import { useHistory } from 'react-router-dom';
+import Cookies from 'js-cookie';
 
 const Chat = () => {
     const [btnDisabled,setBtnDisabled] = useState<boolean>(true)
@@ -16,10 +17,10 @@ const Chat = () => {
         })
     },[message,messages,setMessages])
     
-    const loginInfo: any = jwtDecode(`${localStorage.getItem('token')}`)
+    const loginInfo: any = jwtDecode(`${Cookies.get('token')}`)
     
     const logOut = () => {
-        localStorage.removeItem('token')
+        Cookies.remove('token')
         history.push('login')
     }
 
@@ -66,3 +67,4 @@ const Chat = () => {
 }
 
 export default Chat
+
